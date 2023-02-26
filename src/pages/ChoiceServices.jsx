@@ -5,11 +5,11 @@ import { NavLink } from 'react-router-dom'
 export default function Choiceuser() {
   return (
     <main>
-      <h1>Accueil<br></br></h1>
+       <h1>HRnet</h1><br/>
       <h2>Choice Service</h2>
       <nav>
-          <NavLink to="/newuser">New User</NavLink>
-          <NavLink to="/listusers">List Users</NavLink>
+          <NavLink to="/newemployee">Add New Employee</NavLink>
+          <NavLink to="/listemployees">List Employees</NavLink>
       </nav>
     </main>
   )

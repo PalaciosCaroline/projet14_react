@@ -40,47 +40,175 @@ a{
 }
 .main_app{
   display: flex;
-  min-height: 934px;
-  height:auto;
+}
+@media (max-width: 500px) {
+  .main_app{
+    flex-direction: column;
+  }
 }
 
 main {
   text-align:center;
-
   margin : 0 auto;
 }
  
 
-  h1, h2{
-    font-size:3rem;
-    color: black;
-  }
+h1, h2{
+  font-size:3rem;
+  color: black;
+}
 
-  @media (max-width: 1200px) {
-      h1, h2{
-      font-size: 2rem;
-      }
-  }
-  
+@media (max-width: 1200px) {
+    h1, h2{
+    font-size: 2rem;
+    }
+}
+
+a{
+  border:none;
+  color: black;
+  display:inline-block;
+  text-align:center;
+  width:300px;
+  padding: 10px 20px;
+  margin: 50px;
+  color: #fff;
+  background-color: rgb(12, 147, 102);
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+.confirmationModal{
+  width: 600px;
+  /* border: 3px solid  rgb(12, 147, 102); */
+  background-color: rgb(164, 247, 219);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  padding: 20px 20px 20px 20px;
+}
+
+.btn_closeModal{
+  align-self: flex-end;
+  background-color:  rgb(12, 147, 102);
+  color: #fff;
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+}
+
+.btn_closeModal_icon{
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 1200px) {
   a{
-    border:none;
-    display:inline-block;
-    text-align:center;
-    width:150px;
-    padding: 10px 20px;
-    margin: 50px;
-    border-radius: 20px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-  }
-    @media (max-width: 1200px) {
-      a{
-      font-size: 2rem;
-      }
-    }
-    @media (max-width: 550px) {
-      a{
-      font-size: 1.2rem;
-      
-    }
+  font-size: 2rem;
   }
 
+  .confirmationModal{
+    width: 400px;
+  }
+}
+
+@media (max-width: 550px) {
+  a{
+  font-size: 1.2rem;
+  }
+
+  .confirmationModal{
+    width: 90%;
+  }
+}
+
+.containerNewUser{
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  padding: 20px 20px 20px 20px;
+}
+
+.containerNewUser h2{ 
+  margin-top: 0;
+  background-color: rgb(164, 247, 219);
+}
+
+.titleNewUser{
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.linkNewUser{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+form input, form select {
+  margin: 10px;
+}
+
+select{
+  height: 30px;
+}
+
+.btnFormSave{
+  text-align:center;
+  width:300px;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: rgb(12, 147, 102);
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  border-radius: 15px;
+  border: none;
+  font-size: 1.2rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+  margin: 30px auto;
+}
+
+/* Style pour l'en-tête */
+thead {
+  background-color:  rgb(164, 247, 219);
+  font-weight: bold;
+}
+
+/* Style pour les cellules de l'en-tête */
+th {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #1b1818;
+}
+
+/* Style pour les cellules du corps */
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+
+/* td:first-child {
+  border-top: 1px solid #ddd;
+}
+
+/* Style pour la dernière cellule du corps */
+/* td:last-child {
+  border-bottom: 1px solid #181414;
+} */ */
+
+/* Style pour la première ligne */
+tbody tr:first-child td {
+  border-top: 1px solid #090808;
+}
+
+/* Style pour la dernière ligne */
+tbody tr:last-child td {
+  border-bottom: 1px solid #171313;
+}
+
+/* Style pour les lignes impaires */
+tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
