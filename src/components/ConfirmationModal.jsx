@@ -12,7 +12,7 @@ export default function ConfirmationModal(props) {
             {props.isModalOpen && (
                 <div className='confirmationModal'>
                     <button className='btn_closeModal' onClick={closeModal}><FaTimes className='btn_closeModal_icon'/></button>
-                    <h2>Successful registration of the new user!</h2> 
+                    <h2>Successful registration of the new Employee!</h2> 
                 </div>
             )}
         </div> 

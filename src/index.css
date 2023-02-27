@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fffefe;
 }
 
 code {
@@ -80,7 +81,7 @@ a{
 .confirmationModal{
   width: 600px;
   /* border: 3px solid  rgb(12, 147, 102); */
-  background-color: rgb(164, 247, 219);
+  background-color:   rgb(151,218,133);
   display: flex;
   flex-direction: column;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
@@ -90,6 +91,7 @@ a{
 .btn_closeModal{
   align-self: flex-end;
   background-color:  rgb(12, 147, 102);
+  border: none;
   color: #fff;
   border-radius: 50px;
   width: 50px;
@@ -103,7 +105,7 @@ a{
 
 @media (max-width: 1200px) {
   a{
-  font-size: 2rem;
+  font-size: 1.2rem;
   }
 
   .confirmationModal{
@@ -120,25 +122,34 @@ a{
     width: 90%;
   }
 }
+/* 
+form{
+  background: #ecf0f3;
+} */
 
-.containerNewUser{
+.containerNewEmployee{
   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-  padding: 20px 20px 20px 20px;
+
+  /* background: #f9fbfd; */
 }
 
-.containerNewUser h2{ 
-  margin-top: 0;
+/* .main_newEmployee{
   background-color: rgb(164, 247, 219);
-}
+} */
 
-.titleNewUser{
+
+.titleNewEmployee{
   margin-top: 20px;
   margin-bottom: 0;
 }
 
-.linkNewUser{
+.linkNewEmployee{
   margin-top: 20px;
   margin-bottom: 30px;
+}
+
+form{
+  padding: 0 20px 20px 20px;
 }
 
 form input, form select {
@@ -156,7 +167,6 @@ select{
   color: #fff;
   background-color: rgb(12, 147, 102);
   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-  border-radius: 15px;
   border: none;
   font-size: 1.2rem;
 }
@@ -170,7 +180,6 @@ table {
 
 /* Style pour l'en-tête */
 thead {
-  background-color:  rgb(164, 247, 219);
   font-weight: bold;
 }
 
@@ -179,6 +188,7 @@ th {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #1b1818;
+  background-color: #97da85;
 }
 
 /* Style pour les cellules du corps */
@@ -186,6 +196,7 @@ td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+ 
 }
 
 
@@ -210,5 +221,37 @@ tbody tr:last-child td {
 
 /* Style pour les lignes impaires */
 tr:nth-child(even) {
-  background-color: #f8f8f8;
+  background-color: #faf0f0;
+}
+
+tr:nth-child(odd) {
+  background-color: #ddf7d6;
+}
+
+input::placeholder {
+  color: gray;
+}
+
+input{
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  border: none;
+  height: 30px;
+  font-size: 14px;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+  outline:1px solid rgb(220, 239, 232);
+}
+
+.linkListEmployee{
+  width: auto;
+}
+
+.title_newEmployee{
+  font-size: 1.3rem;
+  padding-top:20px;
+  padding-bottom:20px;
+  margin-top:0;
+  margin-bottom:0;
 }

@@ -1,6 +1,9 @@
 import React from 'react'
 
 export default function TableEmployees({employees}) {
+
+
+
   return (
 
     <table>
@@ -18,17 +21,17 @@ export default function TableEmployees({employees}) {
         </tr>
       </thead>
       <tbody>
-        {employees.map((employee, index) => (
+        {employees?.map((employee, index) => (
           <tr key={index}>
-            <td>{employee['firstName']}</td>
-            <td>{employee['lastName']}</td>
-            <td>{employee['startDate']}</td>
-            <td>{employee['Department']}</td>
-            <td>{employee['dateOfBirth']}</td>
-            <td>{employee['street']}</td>
-            <td>{employee['city']}</td>
-            <td>{employee['state']}</td>
-            <td>{employee['zipCode']}</td>
+            <td>{employee['firstName']? employee['firstName'] : ''}</td>
+            <td>{employee['lastName'] ? employee['lastName'] : ''}</td>
+            <td>{employee['startDate'] ?employee['startDate'] : '' }</td>
+            <td>{employee['Department'] ? employee['Department'] : ''}</td>
+            <td>{employee['dateOfBirth'] ? employee['dateOfBirth'] : ''}</td>
+            <td>{employee['street'] ? employee['street'] : ''}</td>
+            <td>{employee['city'] ? employee['city'] : ''}</td>
+            <td>{employee['state'] ? employee['state'] : ''}</td>
+            <td>{employee['zipCode'] ?employee['zipCode'] :'' }</td>
           </tr>
         ))}
       </tbody>

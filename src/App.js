@@ -1,7 +1,7 @@
 
 import './App.css';
 import React from 'react'
-import ChoiceServices from './pages/ChoiceServices'
+import ChoiceService from './pages/ChoiceServices'
 import NewEmployee from './pages/NewEmployee';
 import { BrowserRouter,Routes, Route} from "react-router-dom";
 import ListEmployees from './pages/ListEmployees';
@@ -11,7 +11,7 @@ return(
     <BrowserRouter>
       <main className='main_app'>
         <Routes>
-          <Route index path="/" element={<ChoiceServices />} />
+          <Route index path="/" element={<ChoiceService />} />
           <Route path="/newemployee" element={<NewEmployee />} />
           <Route path="/listemployees" element={<ListEmployees />} />
         </Routes>

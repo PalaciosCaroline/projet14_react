@@ -49,6 +49,7 @@ export default function FormNewEmployee({setIsModalOpen}) {
   return (
    
     <form action="#" id="create-employee" onSubmit={handleFormSubmit}>
+      
         <div className='boxName'>
         <label htmlFor="first-name">First Name</label>
         <input type="text" id="first-name" onChange={handleFirstNameChange}/>
@@ -69,12 +70,12 @@ export default function FormNewEmployee({setIsModalOpen}) {
         </div>
 
         <label htmlFor="start-date">Start Date</label>
-        <input id="start-date" type="text" onChange={handleStartDateChange}/>
+        <input id="start-date" type="date" onChange={handleStartDateChange}/>
 
         <FieldsetAdress/>
 
        <SelectDepartement/>
-       <button className='btnFormSave' type="submit">Save</button>
+       <button className='btnFormSave' type="submit">Save the new employee</button>
     </form>
   )
 }

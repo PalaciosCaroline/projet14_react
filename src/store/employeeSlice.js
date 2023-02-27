@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// const EMPLOYEE_KEY = "employees";
-
 export const fetchEmployees = createAsyncThunk(
   "employees/fetch",
   async () => {
@@ -16,41 +14,40 @@ export const saveEmployee = createAsyncThunk(
     const employees = JSON.parse(localStorage.getItem("employees")) || [];
     employees.push(employee);
     localStorage.setItem("employees", JSON.stringify(employees));
-    return employee;
+    return employees;
   }
 );
 
 const employeeSlice = createSlice({
   name: "employee",
   initialState: {
-    employeeList: [],
+    employeesList: [],
     status: "idle",
     error: null,
   },
   reducers: {},
-  extraReducers: {
-    [fetchEmployees.pending]: (state) => {
-      state.status = "loading";
-    },
-    [fetchEmployees.fulfilled]: (state, action) => {
-      state.status = "succeeded";
-      state.employeeList = action.payload;
-    },
-    [fetchEmployees.rejected]: (state, action) => {
-      state.status = "failed";
-      state.error = action.error.message;
-    },
-    [saveEmployee.pending]: (state) => {
-      state.status = "loading";
-    },
-    [saveEmployee.fulfilled]: (state, action) => {
-      state.status = "succeeded";
-      state.employeeList = action.payload;
-    },
-    [saveEmployee.rejected]: (state, action) => {
-      state.status = "failed";
-      state.error = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addMatcher(
+        (action) => action.type.endsWith("/pending"),
+        (state) => {
+          state.status = "loading";
+        }
+      )
+      .addMatcher(
+        (action) => action.type.endsWith("/fulfilled"),
+        (state, action) => {
+          state.status = "succeeded";
+          state.employeesList = action.payload;
+        }
+      )
+      .addMatcher(
+        (action) => action.type.endsWith("/rejected"),
+        (state, action) => {
+          state.status = "failed";
+          state.error = action.payload ? action.payload.message : "an error occurred while retrieving the list of employees";
+        }
+      );
   },
 });
 

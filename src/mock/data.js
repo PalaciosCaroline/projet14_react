@@ -1,0 +1,36 @@
+export const dataEmployees = [
+    {
+      firstName: 'John',
+      lastName: 'Doe',
+      dateOfBirth: '1990-01-01',
+      startDate: '2021-01-01',
+      department: 'Sales',
+      street: '123 Main St',
+      city: 'Anytown',
+      state: 'CA',
+      zipCode: '12345',
+    },
+    {
+      firstName: 'Jane',
+      lastName: 'Smith',
+      dateOfBirth: '1985-05-15',
+      startDate: '2020-02-15',
+      department: 'Marketing',
+      street: '456 Oak St',
+      city: 'Othertown',
+      state: 'NY',
+      zipCode: '67890',
+    },
+    {
+      firstName: 'Bob',
+      lastName: 'Johnson',
+      dateOfBirth: '1978-09-30',
+      startDate: '2019-05-01',
+      department: 'IT',
+      street: '789 Maple Ave',
+      city: 'Somewhere',
+      state: 'TX',
+      zipCode: '54321',
+    },
+  ];
+  

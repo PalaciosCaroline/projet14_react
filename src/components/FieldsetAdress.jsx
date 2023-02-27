@@ -10,7 +10,6 @@ export default function FieldsetAdress() {
   const handleZipCodeChange = (e) => dispatch(setZipCodeEntree(e.target.value));
 
   return (
-    <div>
         <fieldset className="address">
             <legend>Address</legend>
 
@@ -25,6 +24,5 @@ export default function FieldsetAdress() {
             <label htmlFor="zip-code">Zip Code</label>
             <input id="zip-code" type="number" onChange={handleZipCodeChange}/>
         </fieldset>
-    </div>
   )
 }
