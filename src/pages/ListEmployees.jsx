@@ -1,10 +1,31 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import { useSelector, useDispatch } from "react-redux";
+import { fetchEmployees } from "../employeeSlice";
 import TableEmployees from '../components/TableEmployees';
 import { NavLink } from 'react-router-dom'
 
 export default function ListEmployees() {
+  const dispatch = useDispatch();
+  // Utilisation du sélecteur pour accéder à l'état des employés
+  const employees = useSelector((state) => state.employees.employees);
+  const status = useSelector((state) => state.employees.status);
+  const error = useSelector((state) => state.employees.error);
 
-const employees = [
+  useEffect(() => {
+    // Utilisation de l'action fetchEmployees pour récupérer les employés
+    dispatch(fetchEmployees());
+  }, [dispatch]);
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  if (status === "failed") {
+    return <div>{error}</div>;
+  }
+
+
+const employeesMock = [
   {
     firstName: 'John',
     lastName: 'Doe',
@@ -44,7 +65,7 @@ const employees = [
     <main className='main_ListEmployees'>
        <h1 class="titleNewUser">HRnet</h1>
           <NavLink to="/newemployee" className="linkNewUser">Add New Employee</NavLink>
-      <TableEmployees employees={employees}/>
+      <TableEmployees employees={employeesMock}/>
     </main>
   )
 }

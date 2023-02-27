@@ -18,17 +18,17 @@ export default function TableEmployees({employees}) {
         </tr>
       </thead>
       <tbody>
-        {employees.map((user, index) => (
+        {employees.map((employee, index) => (
           <tr key={index}>
-            <td>{user['firstName']}</td>
-            <td>{user['lastName']}</td>
-            <td>{user['startDate']}</td>
-            <td>{user['Department']}</td>
-            <td>{user['dateOfBirth']}</td>
-            <td>{user['street']}</td>
-            <td>{user['city']}</td>
-            <td>{user['state']}</td>
-            <td>{user['zipCode']}</td>
+            <td>{employee['firstName']}</td>
+            <td>{employee['lastName']}</td>
+            <td>{employee['startDate']}</td>
+            <td>{employee['Department']}</td>
+            <td>{employee['dateOfBirth']}</td>
+            <td>{employee['street']}</td>
+            <td>{employee['city']}</td>
+            <td>{employee['state']}</td>
+            <td>{employee['zipCode']}</td>
           </tr>
         ))}
       </tbody>
