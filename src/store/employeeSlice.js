@@ -1,32 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const EMPLOYEE_KEY = "employees";
+// const EMPLOYEE_KEY = "employees";
 
 export const fetchEmployees = createAsyncThunk(
-  "employee/fetchEmployees",
+  "employees/fetch",
   async () => {
-    try {
-      const employees = JSON.parse(localStorage.getItem(EMPLOYEE_KEY)) || [];
-      return employees;
-    } catch (error) {
-      console.log("Error fetching employees from local storage", error);
-      return [];
-    }
+    const employees = JSON.parse(localStorage.getItem("employees")) || [];
+    return employees;
   }
 );
 
 export const saveEmployee = createAsyncThunk(
-  "employee/saveEmployee",
-  async (employee, thunkAPI) => {
-    try {
-      const existingEmployees = thunkAPI.getState().employee.employeeList;
-      const newEmployees = [...existingEmployees, employee];
-      localStorage.setItem(EMPLOYEE_KEY, JSON.stringify(newEmployees));
-      return newEmployees;
-    } catch (error) {
-      console.log("Error saving employee to local storage", error);
-      return thunkAPI.rejectWithValue("Error saving employee");
-    }
+  "employees/save",
+  async (employee) => {
+    const employees = JSON.parse(localStorage.getItem("employees")) || [];
+    employees.push(employee);
+    localStorage.setItem("employees", JSON.stringify(employees));
+    return employee;
   }
 );
 
@@ -64,4 +54,4 @@ const employeeSlice = createSlice({
   },
 });
 
-export default employeeSlice.reducer;
+export default employeeSlice;

@@ -11,18 +11,18 @@ export default function FieldsetAdress() {
 
   return (
     <div>
-        <fieldset class="address">
+        <fieldset className="address">
             <legend>Address</legend>
 
-            <label for="street">Street</label>
+            <label htmlFor="street">Street</label>
             <input id="street" type="text" onChange={handleStreetChange}/>
 
-            <label for="city">City</label>
+            <label htmlFor="city">City</label>
             <input id="city" type="text" onChange={handleCityChange}/>
 
            <SelectState/>
 
-            <label for="zip-code">Zip Code</label>
+            <label htmlFor="zip-code">Zip Code</label>
             <input id="zip-code" type="number" onChange={handleZipCodeChange}/>
         </fieldset>
     </div>

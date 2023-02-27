@@ -1,7 +1,7 @@
 
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { newEmployeeEntreeSlice } from "./otherSlice";
-import { employeeSlice } from "./employeeSlice";
+import newEmployeeEntreeSlice from "./newEmployeeEntreeSlice";
+import employeeSlice from "./employeeSlice";
 
 const rootReducer = combineReducers({
   employees: employeeSlice.reducer,

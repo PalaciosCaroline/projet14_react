@@ -1,5 +1,5 @@
 import React from 'react'
-import { setDepartementEntree} from '../store/newEmployeeEntreeslice';
+import { setDepartementEntree} from '../store/newEmployeeEntreeSlice';
 import { useDispatch } from 'react-redux';
 
 export default function SelectDepartement() {
@@ -11,7 +11,7 @@ export default function SelectDepartement() {
 
   return (
     <div className='boxDepartement'>
-        <label for="department">Department</label>
+        <label htmlFor="department">Department</label>
         <select name="department" id="department" onChange={handleDepartementChange}>
             <option>Sales</option>
             <option>Marketing</option>

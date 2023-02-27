@@ -17,29 +17,6 @@ const newEmployeeEntreeSlice = createSlice({
   name: 'newEmployeeEntree',
   initialState,
   reducers: {
-    setNewEmployeeEntree: (state, action) => {
-      const {
-        firstName,
-        lastName,
-        startDate,
-        departement,
-        dateOfBirth,
-        street,
-        city,
-        stateE,
-        zipCode,
-      } = action.payload;
-      
-      state.firstNameEntree = firstName;
-      state.lastNameEntree = lastName;
-      state.startDateEntree = startDate;
-      state.departementEntree = departement;
-      state.dateOfBirthEntree = dateOfBirth;
-      state.streetEntree = street;
-      state.cityEntree = city;
-      state.stateEntree = stateE;
-      state.zipCodeEntree = zipCode;
-    },
     setFirstNameEntree: (state, action) => {
       state.firstNameEntree = action.payload;
     },
@@ -87,6 +64,20 @@ const newEmployeeEntreeSlice = createSlice({
   },
 });
 
-export const { setFirstNameEntree, setLastNameEntree, setStartDateEntree, setDepartementEntree, setDateOfBirthEntree, setStreetEntree, setCityEntree, setStateEntree, setZipCodeEntree, VideInput, setErrorNewEntree, setIsLoadingNewEntree , setNewEmployeeEntree} = newEmployeeEntreeSlice.actions;
+export const {
+  setFirstNameEntree,
+  setLastNameEntree,
+  setStartDateEntree,
+  setDepartementEntree,
+  setDateOfBirthEntree,
+  setStreetEntree,
+  setCityEntree,
+  setStateEntree,
+  setZipCodeEntree,
+  VideInput,
+  setErrorNewEntree,
+  setIsLoadingNewEntree,
+} = newEmployeeEntreeSlice.actions;
 
-export default newEmployeeEntreeSlice.reducer;
+export default newEmployeeEntreeSlice;
+

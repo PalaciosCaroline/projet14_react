@@ -1,11 +1,34 @@
 import React from 'react'
 import FieldsetAdress from './FieldsetAdress'
 import SelectDepartement from './SelectDepartement'
-import { setFirstNameEntree, setLastNameEntree, setDateOfBirthEntree, setStartDateEntree} from '../store/newEmployeeEntreeslice';
-import { useDispatch } from 'react-redux';
+import { setFirstNameEntree, setLastNameEntree, setDateOfBirthEntree, setStartDateEntree} from '../store/newEmployeeEntreeSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchEmployees, saveEmployee } from "../store/employeeSlice";
+import { VideInput} from './../store/newEmployeeEntreeSlice'
 
-export default function FormNewEmployee() {
+export default function FormNewEmployee({setIsModalOpen}) {
   const dispatch = useDispatch();
+
+  const firstName = useSelector((state) => state.newEmployeeEntree.firstNameEntree);
+  const lastName = useSelector((state) => state.newEmployeeEntree.lastNameEntree);
+  const startDate = useSelector((state) => state.newEmployeeEntree.startDateEntree);
+  const departement = useSelector((state) => state.newEmployeeEntree.departementEntree);
+  const dateOfBirth = useSelector((state) => state.newEmployeeEntree.dateOfBirthEntree);
+  const street = useSelector((state) => state.newEmployeeEntree.streetEntree);
+  const city = useSelector((state) => state.newEmployeeEntree.cityEntree);
+  const state = useSelector((state) => state.newEmployeeEntree.stateEntree);
+  const zipCode = useSelector((state) => state.newEmployeeEntreezipCodeEntree);
+ 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const newEmployee = {firstName, lastName,startDate,departement,dateOfBirth,street,city,state,zipCode};
+    dispatch(saveEmployee(newEmployee))
+      .then(() => dispatch(fetchEmployees()))
+      .then(() => {
+        VideInput()
+        setIsModalOpen(true);
+      });
+  };
 
   // const [firstname, setFirstName] = useState("");
   // const [lastname, setLastName] = useState("");
@@ -25,12 +48,12 @@ export default function FormNewEmployee() {
   
   return (
    
-    <form action="#" id="create-employee">
+    <form action="#" id="create-employee" onSubmit={handleFormSubmit}>
         <div className='boxName'>
-        <label for="first-name">First Name</label>
+        <label htmlFor="first-name">First Name</label>
         <input type="text" id="first-name" onChange={handleFirstNameChange}/>
 
-        <label for="last-name">Last Name</label>
+        <label htmlFor="last-name">Last Name</label>
         <input type="text" id="last-name" onChange={handleLastNameChange}/>
         </div>
 
@@ -45,7 +68,7 @@ export default function FormNewEmployee() {
           />
         </div>
 
-        <label for="start-date">Start Date</label>
+        <label htmlFor="start-date">Start Date</label>
         <input id="start-date" type="text" onChange={handleStartDateChange}/>
 
         <FieldsetAdress/>
