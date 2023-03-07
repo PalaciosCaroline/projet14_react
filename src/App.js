@@ -5,8 +5,12 @@ import ChoiceService from './pages/ChoiceServices'
 import NewEmployee from './pages/NewEmployee';
 import { BrowserRouter,Routes, Route} from "react-router-dom";
 import ListEmployees from './pages/ListEmployees';
+import { initializeLocalStorage } from "./mock/data";
 
 export default function App() {
+  
+  initializeLocalStorage();
+
 return(
     <BrowserRouter>
       <main className='main_app'>

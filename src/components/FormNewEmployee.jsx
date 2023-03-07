@@ -1,14 +1,16 @@
 import React from 'react'
 import FieldsetAdress from './FieldsetAdress'
 import SelectDepartement from './SelectDepartement'
-import { setFirstNameEntree, setLastNameEntree, setDateOfBirthEntree, setStartDateEntree} from '../store/newEmployeeEntreeSlice';
+import { setFirstNameEntree, setLastNameEntree, setDateOfBirthEntree} from '../store/newEmployeeEntreeSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchEmployees, saveEmployee } from "../store/employeeSlice";
 import { VideInput} from './../store/newEmployeeEntreeSlice'
+import StartDate from './StartDate';
+import {isDateValid, calculateAge, formatDate} from './../utils/controlDate'
 
 export default function FormNewEmployee({setIsModalOpen}) {
   const dispatch = useDispatch();
-
+  const dateOfBirthEntree = useSelector((state) => state.employees.dateOfBirthEntree);
   const firstName = useSelector((state) => state.newEmployeeEntree.firstNameEntree);
   const lastName = useSelector((state) => state.newEmployeeEntree.lastNameEntree);
   const startDate = useSelector((state) => state.newEmployeeEntree.startDateEntree);
@@ -30,21 +32,19 @@ export default function FormNewEmployee({setIsModalOpen}) {
       });
   };
 
-  // const [firstname, setFirstName] = useState("");
-  // const [lastname, setLastName] = useState("");
-  // const [startDate, setStartDate] = useState("");
-  // const [departement, SetDepartement]  = useState("");;
-  // const [dateOfBirth, setDateOfBirth] = useState("");
-  // const [street, setStreet]  = useState("");
-  // const [city, setCity] = useState("");
-  // const [state, setState] = useState("");
-  // const [zipCode, setZipCode] = useState("");
-
   const handleFirstNameChange = (e) => dispatch(setFirstNameEntree(e.target.value));
   const handleLastNameChange = (e) => dispatch(setLastNameEntree(e.target.value));
-  const handleStartDateChange = (e) => dispatch(setStartDateEntree(e.target.value));
-  const handleDateOfBirthChange = (e) => dispatch(setDateOfBirthEntree(e.target.value));
+  const handleDateOfBirthChange = (e) => {
+      const inputDate = e.target.value;
+      if (!isDateValid(inputDate)) {
+        alert('La date ne peut pas être supérieure à la date du jour.');
+        return;
+      }
+      const formatDateInput = formatDate(e.target.value);
+      dispatch(setDateOfBirthEntree(formatDateInput));
+  }
 
+  console.log(dateOfBirthEntree)
   
   return (
    
@@ -67,10 +67,10 @@ export default function FormNewEmployee({setIsModalOpen}) {
             // value={dateOfBirth}
             onChange={handleDateOfBirthChange}
           />
+          <p>{calculateAge(dateOfBirthEntree)}</p>
         </div>
 
-        <label htmlFor="start-date">Start Date</label>
-        <input id="start-date" type="date" onChange={handleStartDateChange}/>
+        <StartDate/>
 
         <FieldsetAdress/>
 

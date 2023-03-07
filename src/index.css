@@ -129,7 +129,8 @@ form{
 
 .containerNewEmployee{
   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-
+  display: flex;
+  flex-direction: column;
   /* background: #f9fbfd; */
 }
 
@@ -254,4 +255,24 @@ input{
   padding-bottom:20px;
   margin-top:0;
   margin-bottom:0;
+}
+
+.box_startDate{
+  display: flex;
+  justify-items: center;
+}
+.box_labelStartDate{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.box_labelStartDate label{
+  align-self: center;
+}
+
+.p_startDate{
+  font-size: 0.6rem;
+  margin:0;
+  /* -self: flex-end; */
 }
