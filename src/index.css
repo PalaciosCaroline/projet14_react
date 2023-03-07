@@ -276,3 +276,10 @@ input{
   margin:0;
   /* -self: flex-end; */
 }
+table button{
+  background-color: #97da85;
+  border: none;
+}
+.selectedBtnSort{
+  background: green;
+}

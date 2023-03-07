@@ -2,8 +2,8 @@ export const dataEmployees = [
     {
       firstName: 'John',
       lastName: 'Doe',
-      dateOfBirth: '15-01-1975',
-      startDate: '01-04-2022',
+      dateOfBirth: '15/01/1975',
+      startDate: '01/04/2022',
       department: 'Sales',
       street: '123 Main St',
       city: 'Anytown',
@@ -13,8 +13,8 @@ export const dataEmployees = [
     {
       firstName: 'Jane',
       lastName: 'Smith',
-      dateOfBirth: '17-05-1985',
-      startDate: '25-02-2020',
+      dateOfBirth: '17/05/1985',
+      startDate: '25/02/2020',
       department: 'Marketing',
       street: '456 Oak St',
       city: 'Othertown',
@@ -24,8 +24,8 @@ export const dataEmployees = [
     {
       firstName: 'Bob',
       lastName: 'Johnson',
-      dateOfBirth: '30-09-1978',
-      startDate: '03-05-2019',
+      dateOfBirth: '30/09/1978',
+      startDate: '03/05/2019',
       department: 'IT',
       street: '789 Maple Ave',
       city: 'Somewhere',
