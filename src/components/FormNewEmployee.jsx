@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState} from 'react';
+import ConfirmationModal from '../components/ConfirmationModal';
 import FieldsetAdress from './FieldsetAdress'
 import SelectDepartement from './SelectDepartement'
 import { setFirstNameEntree, setLastNameEntree, setDateOfBirthEntree} from '../store/newEmployeeEntreeSlice';
@@ -6,9 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchEmployees, saveEmployee } from "../store/employeeSlice";
 import { VideInput} from './../store/newEmployeeEntreeSlice'
 import StartDate from './StartDate';
-import {isDateValid, calculateAge, formatDate} from './../utils/controlDate'
+import {isDateValid, formatDate} from './../utils/controlDate'
 
-export default function FormNewEmployee({setIsModalOpen}) {
+export default function FormNewEmployee() {
+  const [isModalOpen, setIsModalOpen] = useState(false); 
   const dispatch = useDispatch();
   const dateOfBirthEntree = useSelector((state) => state.employees.dateOfBirthEntree);
   const firstName = useSelector((state) => state.newEmployeeEntree.firstNameEntree);
@@ -16,6 +18,7 @@ export default function FormNewEmployee({setIsModalOpen}) {
   const startDate = useSelector((state) => state.newEmployeeEntree.startDateEntree);
   const departement = useSelector((state) => state.newEmployeeEntree.departementEntree);
   const dateOfBirth = useSelector((state) => state.newEmployeeEntree.dateOfBirthEntree);
+  const errorDateOfBirthEntree = useSelector((state) => state.newEmployeeEntree.errorDateOfBirthEntree);
   const street = useSelector((state) => state.newEmployeeEntree.streetEntree);
   const city = useSelector((state) => state.newEmployeeEntree.cityEntree);
   const state = useSelector((state) => state.newEmployeeEntree.stateEntree);
@@ -27,7 +30,7 @@ export default function FormNewEmployee({setIsModalOpen}) {
     dispatch(saveEmployee(newEmployee))
       .then(() => dispatch(fetchEmployees()))
       .then(() => {
-        VideInput()
+        VideInput();
         setIsModalOpen(true);
       });
   };
@@ -47,7 +50,7 @@ export default function FormNewEmployee({setIsModalOpen}) {
   console.log(dateOfBirthEntree)
   
   return (
-   
+    <div className='box_formEntree'>
     <form action="#" id="create-employee" onSubmit={handleFormSubmit}>
       
         <div className='boxName'>
@@ -67,7 +70,7 @@ export default function FormNewEmployee({setIsModalOpen}) {
             // value={dateOfBirth}
             onChange={handleDateOfBirthChange}
           />
-          <p>{calculateAge(dateOfBirthEntree)}</p>
+          {errorDateOfBirthEntree ?? <p className='errorEntree'>{errorDateOfBirthEntree}</p>}
         </div>
 
         <StartDate/>
@@ -77,5 +80,7 @@ export default function FormNewEmployee({setIsModalOpen}) {
        <SelectDepartement/>
        <button className='btnFormSave' type="submit">Save the new employee</button>
     </form>
+    {isModalOpen && (<ConfirmationModal setIsModalOpen={setIsModalOpen} isModalOpen={isModalOpen} />)}
+    </div>
   )
 }

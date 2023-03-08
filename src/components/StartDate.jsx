@@ -4,7 +4,7 @@ import {setStartDateEntree} from './../store/newEmployeeEntreeSlice'
 import { formatDate } from '../utils/controlDate';
 
 export default function StartDate() {
-    // const [errorDateBirth, setErrorDateBirth] = useState
+    // const [errorStartDate, setErrorStartDate] = useState()
     const dispatch = useDispatch();
 
     function handleStartDateChange(event) {
@@ -13,11 +13,8 @@ export default function StartDate() {
     }
 
   return (
-    <div className='box_startDate'>
-        <div className='box_labelStartDate'>
+    <div className='form-group'>       
         <label htmlFor="start-date">Start Date</label>
-        <p className='p_startDate'>date du jour par défaut</p>
-        </div>
         <input id="start-date" type="date" onChange={handleStartDateChange} /> 
     </div>
   )

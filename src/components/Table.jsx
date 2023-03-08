@@ -78,8 +78,6 @@ export default function Table({ data, columns }) {
       });
     }
 
-    
-
     return (
       <tbody>
         {sortedData.map((item, index) => (

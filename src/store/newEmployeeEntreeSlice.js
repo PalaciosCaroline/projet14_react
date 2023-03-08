@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { formatDate } from '../utils/controlDate';
+// import { formatDate } from '../utils/controlDate';
 
 const initialState = {
   firstNameEntree: '',
   errorFirstNameEntree : '',
   lastNameEntree: '',
   errorLastNameEntree: '',
-  startDateEntree: formatDate(new Date()),
+  // startDateEntree: formatDate(new Date()),
+  startDateEntree: '',
   errorStartDateEntree: '',
   departementEntree: '',
   errordepartementEntree: '',

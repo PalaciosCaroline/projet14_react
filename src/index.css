@@ -19,6 +19,7 @@ code {
 
 body {
   margin: 0;
+  color: #0d0d0d;
   padding: 0;
   height:100vh;
   box-sizing: border-box;
@@ -39,11 +40,13 @@ ul, li{
 a{
   text-decoration: none;
 }
-.main_app{
+
+.box_app{
   display: flex;
+  text-align: center;
 }
 @media (max-width: 500px) {
-  .main_app{
+  .box_app{
     flex-direction: column;
   }
 }
@@ -52,17 +55,26 @@ main {
   text-align:center;
   margin : 0 auto;
 }
+
+.main_newEmployee{
+  display: flex;
+}
  
 
 h1, h2{
   font-size:3rem;
-  color: black;
+  color: #0d0d0d;
 }
 
 @media (max-width: 1200px) {
     h1, h2{
     font-size: 2rem;
     }
+}
+
+.errorEntree{
+  color: red;
+  font-size: 0.8rem;
 }
 
 a{
@@ -74,23 +86,108 @@ a{
   padding: 10px 20px;
   margin: 50px;
   color: #fff;
-  background-color: rgb(12, 147, 102);
+  background-color: #677e11;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
 
+.box_home{
+  min-height: 100vh;
+  background-color: #eff2e9;
+}
+
+.main_newEmployee {
+  min-height: 100vh;
+  min-width: 100%;
+}
+
+@media (max-width: 900px) {
+  .main_newEmployee {
+    flex-direction: column;
+  }
+
+}
+
+.main_newEmployee header{
+  background-color: #b1c46c;
+  background-color: #eff2e9;
+  background-color: #c9df7d;
+  width: 400px;
+}
+
+@media (max-width: 1000px) {
+  img{
+    margin:20px auto 0;
+    width: 300px;
+    height: 300px;
+  }
+
+  .main_newEmployee header{
+    width: 400px;
+  }
+  /* .boxName, .address{
+    display: flex;
+    flex-direction: column;
+  } */
+}
+@media (max-width: 900px) {
+  img{
+    margin:20px auto 0;
+    width: 100px;
+    height: 100px;
+  }
+  .main_newEmployee{
+    flex-direction: column;
+  }
+
+  .main_newEmployee header{
+    width: 100%;
+  }
+}
+
+@media (max-width: 650px), (min-width: 900px) and (max-width: 1000px){
+  .boxName, .address{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.box_formEntree{
+  position: relative;
+}
+
+.box_formEntree input{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.address{
+  margin:10px auto;
+} 
+
+fieldset, select {
+  border: 1px solid #b1c46c;
+  border: 1px solid #344f04;
+}
+
 .confirmationModal{
-  width: 600px;
-  /* border: 3px solid  rgb(12, 147, 102); */
-  background-color:   rgb(151,218,133);
+  width: 100%;
+  height: 100%;
+  background-color:  #c4da78 ;
   display: flex;
   flex-direction: column;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
   padding: 20px 20px 20px 20px;
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right: 0;
+  
 }
 
 .btn_closeModal{
   align-self: flex-end;
-  background-color:  rgb(12, 147, 102);
+  background-color: #344f04;
   border: none;
   color: #fff;
   border-radius: 50px;
@@ -108,9 +205,9 @@ a{
   font-size: 1.2rem;
   }
 
-  .confirmationModal{
+  /* .confirmationModal{
     width: 400px;
-  }
+  } */
 }
 
 @media (max-width: 550px) {
@@ -118,35 +215,37 @@ a{
   font-size: 1.2rem;
   }
 
-  .confirmationModal{
+  /* .confirmationModal{
     width: 90%;
-  }
+  } */
 }
-/* 
-form{
-  background: #ecf0f3;
-} */
 
 .containerNewEmployee{
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
   display: flex;
   flex-direction: column;
-  /* background: #f9fbfd; */
+  align-items: center;
+  width: 100%;
+  background-color: #f6f8f2;
+}
+.containerNewEmployee select{
+  background-color: #f6f8f2;
+  text-align: center;
 }
 
-/* .main_newEmployee{
-  background-color: rgb(164, 247, 219);
-} */
+.containerNewEmployee input{
+  background-color: #f6f8f2;
+}
 
 
 .titleNewEmployee{
   margin-top: 20px;
-  margin-bottom: 0;
+  margin-bottom: 20px;
 }
 
 .linkNewEmployee{
   margin-top: 20px;
   margin-bottom: 30px;
+
 }
 
 form{
@@ -167,16 +266,21 @@ select{
   padding: 10px 20px;
   color: #fff;
   background-color: rgb(12, 147, 102);
+  background-color: #677e11;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
   border: none;
   font-size: 1.2rem;
+  margin: 30px auto;
 }
-
+.box_table{
+  width: 90%;
+  margin: 20px auto;
+}
 table {
   border-collapse: collapse;
   width: 100%;
   font-size: 14px;
-  margin: 30px auto;
+  /* margin: 30px auto; */
 }
 
 /* Style pour l'en-tête */
@@ -190,6 +294,8 @@ th {
   text-align: left;
   border-bottom: 1px solid #1b1818;
   background-color: #97da85;
+  background-color: hsl(73, 76%, 28%);
+  background-color: #b1c46c;
 }
 
 /* Style pour les cellules du corps */
@@ -212,7 +318,7 @@ td {
 
 /* Style pour la première ligne */
 tbody tr:first-child td {
-  border-top: 1px solid #090808;
+  border-top: 1px solid #171313;
 }
 
 /* Style pour la dernière ligne */
@@ -222,11 +328,11 @@ tbody tr:last-child td {
 
 /* Style pour les lignes impaires */
 tr:nth-child(even) {
-  background-color: #faf0f0;
+  background-color: #f6f9eb;
 }
 
 tr:nth-child(odd) {
-  background-color: #ddf7d6;
+  background-color: #edf1e1;
 }
 
 input::placeholder {
@@ -250,17 +356,13 @@ input{
 }
 
 .title_newEmployee{
-  font-size: 1.3rem;
-  padding-top:20px;
-  padding-bottom:20px;
+  font-size: 2rem;
+  padding-top:40px;
+  padding-bottom:40px;
   margin-top:0;
   margin-bottom:0;
 }
 
-.box_startDate{
-  display: flex;
-  justify-items: center;
-}
 .box_labelStartDate{
   display: flex;
   flex-direction: column;
@@ -278,8 +380,10 @@ input{
 }
 table button{
   background-color: #97da85;
+  background-color: #b1c46c;
   border: none;
 }
 .selectedBtnSort{
   background: green;
+  background: #344f04;
 }

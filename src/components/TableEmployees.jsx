@@ -16,7 +16,7 @@ export default function EmployeeTable({employees}) {
   ];
 
   return (
-    <div>
+    <div className='box_table'>
       <Table data={employees} columns={columns} />
     </div>
   );
