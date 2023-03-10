@@ -36,13 +36,13 @@ export default function Table({ data, columns }) {
           {columnData.map(({ label, property, selectedBtnSort }) => (
             <th key={property}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <p style={{ display: 'block', textAlign:'center'}}>{label}</p>
+                <p className='label'>{label}</p>
                 <div>
                   <button
                     type="button"
                     onClick={() => handleSort(property, 'asc')}
-                    style={{ marginLeft: '8px' , width: '50px',display: 'inline-block'}}
-                    className={selectedBtnSort && sortOrder === 'asc' ? 'selectedBtnSort' : ''}
+                    
+                   className={`btnForSort ${selectedBtnSort && sortOrder === 'asc' ? 'selectedBtnSort' : ''}`}
                   >
                     <FaSortUp  style={{ height:'1.4rem', width: '1.4rem',verticalAlign: 'center' }} />
                   </button>
@@ -51,9 +51,9 @@ export default function Table({ data, columns }) {
                     type="button"
                     onClick={() => handleSort(property, 'desc')}
                     style={{ marginLeft: '8px', width: '50px',display: 'block', marginTop: '8px'}}
-                    className={selectedBtnSort && sortOrder === 'desc' ? 'selectedBtnSort' : ''}
+                    className={`btnForSort ${selectedBtnSort && sortOrder === 'desc' ? 'selectedBtnSort' : ''}`}
                   >
-                    <FaSortDown style={{ height:'1.4rem', width: '1.4rem',verticalAlign: 'center' }} />
+                    <FaSortDown />
                   </button>
                 </div>
               </div>

@@ -28,6 +28,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #eff2e9;
 }
 
 ul, li{
@@ -344,7 +345,7 @@ input{
   padding: 10px;
   padding-left: 20px;
   border: none;
-  height: 30px;
+  height: 40px;
   font-size: 14px;
   border-radius: 50px;
   box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
@@ -379,11 +380,44 @@ input{
   /* -self: flex-end; */
 }
 table button{
-  background-color: #97da85;
   background-color: #b1c46c;
   border: none;
 }
 .selectedBtnSort{
-  background: green;
   background: #344f04;
 }
+
+table button > svg {
+  height:1.4rem;
+  width: 1.4rem;
+  vertical-align: center;
+}
+
+table button {
+  margin-left: 8px;
+   width: 50px;
+   display: block;
+   margin-top: 8px;
+}
+
+.box_startDate{
+  display: flex;
+  align-items: center;
+}
+.box_startDate p {
+  margin-right: 10px;
+}
+.box_startDate .MuiInputBaseInput-input .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+  height: 20px;
+}
+.box_startDate .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+  height: 25px;
+  margin: 10px;
+  padding:10px;
+}
+
+/* .box_startDate label[data-shrink=false]+.MuiInputBase-formControl .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+  height: 30px;
+  margin: 0;
+  padding:8px;
+} */

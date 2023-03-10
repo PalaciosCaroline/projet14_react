@@ -8,6 +8,10 @@ import { fetchEmployees, saveEmployee } from "../store/employeeSlice";
 import { VideInput} from './../store/newEmployeeEntreeSlice'
 import StartDate from './StartDate';
 import {isDateValid, formatDate} from './../utils/controlDate'
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import 'dayjs/locale/en-gb';
+
 
 export default function FormNewEmployee() {
   const [isModalOpen, setIsModalOpen] = useState(false); 
@@ -51,6 +55,7 @@ export default function FormNewEmployee() {
   
   return (
     <div className='box_formEntree'>
+       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={'en-gb'}>
     <form action="#" id="create-employee" onSubmit={handleFormSubmit}>
       
         <div className='boxName'>
@@ -75,11 +80,14 @@ export default function FormNewEmployee() {
 
         <StartDate/>
 
+       
+
         <FieldsetAdress/>
 
        <SelectDepartement/>
        <button className='btnFormSave' type="submit">Save the new employee</button>
     </form>
+    </LocalizationProvider>
     {isModalOpen && (<ConfirmationModal setIsModalOpen={setIsModalOpen} isModalOpen={isModalOpen} />)}
     </div>
   )
