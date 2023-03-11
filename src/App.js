@@ -1,16 +1,21 @@
 
 import './App.css';
-import React from 'react'
+import React, {useEffect} from "react";
 import Home from './pages/Home'
 import NewEmployee from './pages/NewEmployee';
 import { BrowserRouter,Routes, Route} from "react-router-dom";
 import ListEmployees from './pages/ListEmployees';
-import { initializeLocalStorage } from "./mock/data";
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchEmployees } from './store/employeesSlice';
 
 export default function App() {
-  
-  initializeLocalStorage();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    // Fetch the list of employees when the component mounts
+    dispatch(fetchEmployees());
+  }, []);
+ 
 return(
     <BrowserRouter>
       <div className='box_app'>

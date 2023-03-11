@@ -383,14 +383,16 @@ table button{
   background-color: #b1c46c;
   border: none;
 }
-.selectedBtnSort{
-  background: #344f04;
+.selectedBtnSort > svg{
+  /* background: #344f04; */
+  color: #2e4506;
 }
 
 table button > svg {
   height:1.4rem;
   width: 1.4rem;
   vertical-align: center;
+  color:hsl(73, 75%, 33%);
 }
 
 table button {
@@ -407,9 +409,9 @@ table button {
 .box_startDate p {
   margin-right: 10px;
 }
-.box_startDate .MuiInputBaseInput-input .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+/* .box_startDate .MuiInputBaseInput-input .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
   height: 20px;
-}
+} */
 .box_startDate .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
   height: 25px;
   margin: 10px;
@@ -421,3 +423,7 @@ table button {
   margin: 0;
   padding:8px;
 } */
+
+.box_startDate .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+  padding-left: 10px;
+}

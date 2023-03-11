@@ -3,20 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import FormNewEmployee from '../components/FormNewEmployee'
 // import ConfirmationModal from '../components/ConfirmationModal';
 import { NavLink } from 'react-router-dom'
-import { fetchEmployees} from "../store/employeeSlice";
+import { fetchEmployees} from "../store/employeesSlice";
 import logoHRnet from './../assets/logoHRnet_bg.png'
 // import { VideInput} from './../store/newEmployeeEntreeSlice'
 
 export default function NewEmployee() {
   // const [isModalOpen, setIsModalOpen] = useState(false); 
-  const statusEmployees = useSelector((state) => state.employees.status); 
-  const errorEmployees = useSelector((state) => state.employees.error);
 
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchEmployees());
-  }, [dispatch]);
 
  
   // const saveError = useSelector((state) => state.employees.saveError);
@@ -45,17 +39,6 @@ export default function NewEmployee() {
   //     });
   // };
 
-  // if (statusEmployees === "loading" || fetchStatus === "loading") {
-  //   return <div>Loading...</div>;
-  // }
-
-  // if (statusEmployees === "failed") {
-  //   return <div>{saveError}</div>;
-  // }
-
-  // if (statusEmployees === "failed") {
-  //   return <div>{fetchError}</div>;
-  // }
 
   return (
     <main className='main_newEmployee'>

@@ -1,4 +1,4 @@
-export const dataEmployees = [
+export const dataEmployeesMock = [
     {
       firstName: 'John',
       lastName: 'Doe',
@@ -34,10 +34,4 @@ export const dataEmployees = [
     },
   ];
 
-  export function initializeLocalStorage() {
-    const employees = JSON.parse(localStorage.getItem("employees"));
-    if (!employees) {
-      localStorage.setItem("employees", JSON.stringify(dataEmployees));
-    }
-  }
   
