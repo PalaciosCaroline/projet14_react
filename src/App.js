@@ -5,16 +5,17 @@ import Home from './pages/Home'
 import NewEmployee from './pages/NewEmployee';
 import { BrowserRouter,Routes, Route} from "react-router-dom";
 import ListEmployees from './pages/ListEmployees';
-import { useSelector, useDispatch } from 'react-redux';
+import { initializeLocalStorage } from './utils/useLocalStorage';
 import { fetchEmployees } from './store/employeesSlice';
+import { useDispatch } from "react-redux";
 
 export default function App() {
   const dispatch = useDispatch();
 
+  // initializeLocalStorage();
   useEffect(() => {
-    // Fetch the list of employees when the component mounts
     dispatch(fetchEmployees());
-  }, []);
+  }, [dispatch]);
  
 return(
     <BrowserRouter>

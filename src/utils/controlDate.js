@@ -7,10 +7,14 @@ export function formatDate(dateString) {
     return `${day}/${month}/${year}`;
 }
 
-export function isDateValid(dateString) {
-    const inputDate = new Date(dateString);
-    const currentDate = new Date();
-    return inputDate <= currentDate;
+export function isDateValid(inputDate) {
+  const currentDate = new Date();
+    const minDate = new Date(currentDate.getFullYear() - 90, currentDate.getMonth(), currentDate.getDate());
+    const maxDate = new Date(currentDate.getFullYear() - 12, currentDate.getMonth(), currentDate.getDate());
+    const dateOfBirth = new Date(inputDate);
+    if (dateOfBirth < minDate || dateOfBirth > maxDate) {
+      return false;
+    } else return true;
 }
 
 // export function calculateAge(dateString) {

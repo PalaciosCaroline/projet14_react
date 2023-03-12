@@ -76,6 +76,7 @@ h1, h2{
 .errorEntree{
   color: red;
   font-size: 0.8rem;
+  margin-top : 0;
 }
 
 a{
@@ -145,10 +146,20 @@ a{
   }
 }
 
+.box_input{
+  margin-top : 10px;
+}
+
+.boxName{
+  display: flex;
+}
 @media (max-width: 650px), (min-width: 900px) and (max-width: 1000px){
   .boxName, .address{
     display: flex;
     flex-direction: column;
+  }
+  .address label{ 
+    margin-top:10px;
   }
 }
 
@@ -156,18 +167,21 @@ a{
   position: relative;
 }
 
-.box_formEntree input{
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
+/* .box_formEntree input{
+  margin-top: 20px;
+  margin-bottom: 0;
+} */
+/* .box_formEntree label{
+  margin-top: 20px;
+  margin-bottom: 0;
+} */
 
 .address{
   margin:10px auto;
 } 
 
 fieldset, select {
-  border: 1px solid #b1c46c;
-  border: 1px solid #344f04;
+  border: 1px solid #57810b;
 }
 
 .confirmationModal{
@@ -183,7 +197,7 @@ fieldset, select {
   bottom:0;
   left:0;
   right: 0;
-  
+  z-index: 9999;
 }
 
 .btn_closeModal{
@@ -253,9 +267,14 @@ form{
   padding: 0 20px 20px 20px;
 }
 
-form input, form select {
-  margin: 10px;
+form input{
+  margin: 10px 10px 0;
 }
+
+form select {
+  margin: 20px 10px 10px;
+}
+
 
 select{
   height: 30px;
@@ -405,18 +424,13 @@ table button {
 .box_startDate{
   display: flex;
   align-items: center;
+  margin-top: 20px;
 }
 .box_startDate p {
   margin-right: 10px;
 }
-/* .box_startDate .MuiInputBaseInput-input .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
-  height: 20px;
-} */
-.box_startDate .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
-  height: 25px;
-  margin: 10px;
-  padding:10px;
-}
+
+
 
 /* .box_startDate label[data-shrink=false]+.MuiInputBase-formControl .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
   height: 30px;
@@ -426,4 +440,24 @@ table button {
 
 .box_startDate .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
   padding-left: 10px;
+}
+
+.box_startDate .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+  /* height: 25px; */
+  margin: 10px; 
+  padding:10px;
+}
+.css-16b5y55-MuiPickersLayout-contentWrapper .css-1t1j96h-MuiPaper-root-MuiDialog-paper.css-156tkzh-MuiButtonBase-root-MuiPickersDay-root.Mui-selected{
+  background-color: greenyellow;
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper.css-156tkzh-MuiButtonBase-root-MuiPickersDay-root.Mui-selected:hover{
+  background-color: greenyellow;
+}
+.custom-datepicker-root :global(.Mui-selected) {
+  background-color: red;
+}
+
+.MuiButtonBase-root MuiPickersDay-root .Mui-selected .MuiPickersDay-dayWithMargin .css-156tkzh-MuiButtonBase-root-MuiPickersDay-root.Mui-selected{
+  background-color: greenyellow;
 }

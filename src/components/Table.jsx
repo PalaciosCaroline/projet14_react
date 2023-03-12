@@ -40,18 +40,18 @@ export default function Table({ data, columns }) {
                 <div>
                   <button
                     type="button"
-                    onClick={() => handleSort(property, 'asc')}
+                    onClick={() => handleSort(property, 'desc')}
                     
-                   className={`btnForSort ${selectedBtnSort && sortOrder === 'asc' ? 'selectedBtnSort' : ''}`}
+                   className={`btnForSort ${selectedBtnSort && sortOrder === 'desc' ? 'selectedBtnSort' : ''}`}
                   >
                     <FaSortUp  style={{ height:'1.4rem', width: '1.4rem',verticalAlign: 'center' }} />
                   </button>
                 
                   <button
                     type="button"
-                    onClick={() => handleSort(property, 'desc')}
+                    onClick={() => handleSort(property, 'asc')}
                     style={{ marginLeft: '8px', width: '50px',display: 'block', marginTop: '8px'}}
-                    className={`btnForSort ${selectedBtnSort && sortOrder === 'desc' ? 'selectedBtnSort' : ''}`}
+                    className={`btnForSort ${selectedBtnSort && sortOrder === 'asc' ? 'selectedBtnSort' : ''}`}
                   >
                     <FaSortDown />
                   </button>

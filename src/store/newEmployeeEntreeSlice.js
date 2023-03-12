@@ -9,9 +9,9 @@ const initialState = {
   // startDateEntree: dayjs().format('DD/MM/YYYY'),
   errorStartDateEntree: '',
   departementEntree: '',
-  errordepartementEntree: '',
+  errorDepartementEntree: '',
   dateOfBirthEntree: '',
-  errordateOfBirthEntree: '',
+  errorDateOfBirthEntree: '',
   streetEntree: '',
   cityEntree: '',
   stateEntree: '',
@@ -64,6 +64,9 @@ const newEmployeeEntreeSlice = createSlice({
     setErrorNewEntree: (state, action) => {
       state.errorNewEntree = action.payload;
     },
+    setErrorDateOfBirthEntree: (state, action) => {
+      state.errorDateOfBirthEntree = action.payload;
+    },
     setIsLoadingNewEntree: (state, action) => {
       state.isLoadingNewEntree = action.payload;
     },
@@ -83,6 +86,7 @@ export const {
   VideInput,
   setErrorNewEntree,
   setIsLoadingNewEntree,
+  setErrorDateOfBirthEntree
 } = newEmployeeEntreeSlice.actions;
 
 export default newEmployeeEntreeSlice;

@@ -10,9 +10,6 @@ import logoHRnet from './../assets/logoHRnet_bg.png'
 export default function NewEmployee() {
   // const [isModalOpen, setIsModalOpen] = useState(false); 
 
-
-
- 
   // const saveError = useSelector((state) => state.employees.saveError);
 
   // const fetchStatus = useSelector((state) => state.employees.status);
