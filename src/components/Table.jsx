@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaSortDown, FaSortUp } from 'react-icons/fa';
+import { FaSortDown, FaSortUp, FaSearch } from 'react-icons/fa';
 import { sortDates } from '../utils/controlDate';
 
 export default function Table({ data, columns }) {
@@ -102,6 +102,8 @@ export default function Table({ data, columns }) {
                 onChange={handleSearchByProperty}
                 placeholder="Search..."
                 name={property}
+                style={{width:'120px', fontSize:'0.8rem', height:'30px'}}
+                className='inputSearchByProperty'
               />
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <p className='label'>{label}</p>
@@ -157,8 +159,13 @@ export default function Table({ data, columns }) {
 
   return (
     <>
-    <button onClick={handleResetSearch}>Reset</button>
-    <input type="text" value={searchTerm} onChange={handleSearch} placeholder="Search..." />
+    <div className='box_searchReset'>
+        <div className='box_searchGlobal'>
+            <input type="text" value={searchTerm} onChange={handleSearch} placeholder="Search..." id='searchGlobal'/>
+            <label htmlFor="searchGlobal"><FaSearch/></label>  
+        </div>
+        <button onClick={handleResetSearch} style={{marginRight:'20px'}} className='btn_Reset'>Reset all search</button>
+    </div>
     <div className='box_ChoiceEntries' style={{display:'flex', justifyContent:'space-between', alignItems:'center', width:'350px', height:'30px', marginBottom:'20px'}}>
       <div>
         <span>Show</span>

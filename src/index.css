@@ -5,30 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fffefe;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-*{
-  box-sizing: border-box;
-}
-
-body {
   margin: 0;
   color: #0d0d0d;
   padding: 0;
   height:100vh;
   box-sizing: border-box;
-  font-family: 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background-color: #eff2e9;
+}
+
+*{
+  box-sizing: border-box;
 }
 
 ul, li{
@@ -167,15 +153,6 @@ a{
   position: relative;
 }
 
-/* .box_formEntree input{
-  margin-top: 20px;
-  margin-bottom: 0;
-} */
-/* .box_formEntree label{
-  margin-top: 20px;
-  margin-bottom: 0;
-} */
-
 .address{
   margin:10px auto;
 } 
@@ -202,7 +179,7 @@ fieldset, select {
 
 .btn_closeModal{
   align-self: flex-end;
-  background-color: #344f04;
+  background-color: #677e11;
   border: none;
   color: #fff;
   border-radius: 50px;
@@ -430,8 +407,6 @@ table button {
   margin-right: 10px;
 }
 
-
-
 /* .box_startDate label[data-shrink=false]+.MuiInputBase-formControl .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
   height: 30px;
   margin: 0;
@@ -465,3 +440,93 @@ table button {
 /* .box_numberEntries{
   justify-content: space-between;
 } */
+
+.inputSearchByProperty{
+background-color: #c9de7e;
+box-shadow: inset 6px 6px 6px #9bc58e, inset -6px -6px 6px rgb(212, 233, 206);
+}
+
+.inputSearchByProperty::placeholder{
+  color: #000;
+}
+
+.logoHome{
+  width: 330px;
+  height: 300px;
+}
+
+.header_ListEmployees{
+  background-color: #c9df7d;
+  display: flex;
+ 
+}
+
+.header_ListEmployees img{
+  width: 200px;
+  height: 180px;
+  justify-self: flex-start;
+}
+
+.title_ListEmployees{
+  margin: 10px auto; 
+}
+
+.btn_Reset{
+  color: #fff;
+  background-color: #677e11;
+  box-shadow: 1px 1px 5px rgb(0 0 0 / 40%);
+  border: none;
+}
+
+
+@media (max-width: 800px) {
+  .header_ListEmployees{
+    flex-direction: column;
+  }
+}
+
+/* ajouter dans le plugin */
+#searchGlobal {
+  position: relative;
+  padding-left: 30px; /* espace pour le label */
+  width: 320px;
+}
+
+.box_searchGlobal label {
+  position: absolute;
+  right: 15px; /* position horizontale du label */
+  top: 50%; /* position verticale du label */
+  transform: translateY(-50%); /* centrer le label verticalement */
+  color:#4f4d4d;
+}
+
+.box_searchGlobal{
+  position: relative;
+  width: 320px;
+  /* margin:10px auto; */
+}
+
+.box_searchReset{
+  display: flex;
+  justify-content: center;
+}
+
+.btn_Reset{
+  margin-left: 20px;
+}
+
+tr{
+  width: auto;
+}
+
+table {
+  overflow-x: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; /* permet une meilleure performance de défilement sur les appareils mobiles */
+}
+
+.main_ListEmployees{
+  width: 100%;
+}
+
+

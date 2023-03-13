@@ -17,39 +17,6 @@ export function isDateValid(inputDate) {
     } else return true;
 }
 
-// export function calculateAge(dateString) {
-//     const birthDate = new Date(dateString);
-//     const today = new Date();
-//     let age = today.getFullYear() - birthDate.getFullYear();
-//     const monthDifference = today.getMonth() - birthDate.getMonth();
-  
-//     if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-//       age--;
-//     }
-  
-//     return age;
-//   }
-
-
-export function calculateAge(datestring) {
-    const birthDate = new Date(datestring);
-  
-    if (isNaN(birthDate.getTime())) {
-      // Si la date n'est pas valide, retourne une erreur ou une chaîne vide selon votre besoin
-      return "";
-    }
-  
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDifference = today.getMonth() - birthDate.getMonth();
-  
-    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-  
-    return age;
-}
-
 export const sortDates = (a, b,sortKey, sortOrder ) => {
   const dateRegex = /^\d{2}([./-])\d{2}\1\d{4}$/;
   const isDate = dateRegex.test(a[sortKey]) && dateRegex.test(b[sortKey]);

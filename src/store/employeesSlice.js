@@ -5,7 +5,6 @@ import { dataEmployeesMock } from "../mock/data";
 export const fetchEmployees = createAsyncThunk(
   "employees/fetch",
   async () => {
-    // const employees = JSON.parse(localStorage.getItem("employees")) || dataEmployeesMock;
     const employees = JSON.parse(localStorage.getItem("employees")) ;
     if (!employees) {
       localStorage.setItem("employees", JSON.stringify(dataEmployeesMock));
