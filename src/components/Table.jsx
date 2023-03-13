@@ -1,86 +1,144 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaSortDown, FaSortUp } from 'react-icons/fa';
+import { sortDates } from '../utils/controlDate';
 
 export default function Table({ data, columns }) {
   const [sortKey, setSortKey] = useState(null);
   const [sortOrder, setSortOrder] = useState('asc');
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
+  const [totalPages, setTotalPages] = useState(0);
+  const [sortedData, setSortedData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerms, setSearchTerms] = useState({});
+  const initialInputValues = {};
+  columns.forEach(({ property }) => {
+    initialInputValues[property] = '';
+  });
+  const [inputValues, setInputValues] = useState(initialInputValues);
+
+  useEffect(() => {
+    let sortedData = data;
+    if (sortKey !== null) {
+      sortedData = data.slice().sort((a, b) => {
+        if (typeof sortedData[0][sortKey] === 'string' && sortedData[0][sortKey].match(/^\d{2}([./-])\d{2}\1\d{4}$/)) {
+          return sortDates(a, b, sortKey, sortOrder);
+        } else {
+          const valueA = a[sortKey].toLowerCase();
+          const valueB = b[sortKey].toLowerCase();
+          return valueA.localeCompare(valueB, undefined, { sensitivity: 'base' }) * (sortOrder === 'asc' ? 1 : -1);
+        }
+      });
+    }
+  setSortedData(sortedData);
+  }, [data, sortKey, sortOrder]);
+
+  useEffect(() => {
+    setTotalPages(Math.ceil(sortedData.length / perPage));
+    setPage(1);
+  }, [sortedData, perPage]);
 
   const handleSort = (key, sortOrder) => {
     setSortKey(key);
     setSortOrder(sortOrder);
   };
 
-  const sortDates = (a, b) => {
-    const dateRegex = /^\d{2}([./-])\d{2}\1\d{4}$/;
-    const isDate = dateRegex.test(a[sortKey]) && dateRegex.test(b[sortKey]);
-    if (isDate) {
-      const delimiter = dateRegex.exec(a[sortKey])[1];
-      const [dayA, monthA, yearA] = a[sortKey].split(delimiter).map((x) => parseInt(x, 10));
-      const [dayB, monthB, yearB] = b[sortKey].split(delimiter).map((x) => parseInt(x, 10));
-      const dateA = new Date(yearA, monthA - 1, dayA);
-      const dateB = new Date(yearB, monthB - 1, dayB);
-      if (dateA < dateB) return sortOrder === 'asc' ? -1 : 1;
-      if (dateA > dateB) return sortOrder === 'asc' ? 1 : -1;
-      return 0;
-    } else {
-      if (a[sortKey] < b[sortKey]) return sortOrder === 'asc' ? -1 : 1;
-      if (a[sortKey] > b[sortKey]) return sortOrder === 'asc' ? 1 : -1;
-      return 0;
+  const handlePerPageChange = (event) => {
+    setPerPage(parseInt(event.target.value));
+  };
+
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+  };
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearchByProperty = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setInputValues((prevInputValues) => ({ ...prevInputValues, [name]: value }));
+    setSearchTerms((prevSearchTerms) => ({ ...prevSearchTerms, [name]: value }));
+  };
+
+  const filterData = (data) => {
+    let filteredData = data;
+    if (searchTerm) {
+      filteredData = filteredData.filter((item) =>
+        Object.values(item).some((value) =>
+          value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
     }
+    filteredData = filteredData.filter((item) =>
+    Object.keys(searchTerms).every((property) =>
+      item[property]
+        .toString()
+        .toLowerCase()
+        .includes(searchTerms[property].toLowerCase() || '')
+      )
+    );
+    return filteredData;
+  };
+
+  const filteredData = filterData(sortedData);
+
+  const handleResetSearch = () => {
+    setSearchTerm('');
+    setSearchTerms({});
+    setInputValues(initialInputValues);
   };
 
   const renderHeader = () => {
     return (
-      <thead>
-        <tr>
-          {columnData.map(({ label, property, selectedBtnSort }) => (
-            <th key={property}>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <p className='label'>{label}</p>
+      <thead> 
+      <tr>
+      {columnData.map(({ label, property, selectedBtnSort }) => (
+          <th key={property}>
+            <input
+                type="text"
+                value={inputValues[property]}
+                onChange={handleSearchByProperty}
+                placeholder="Search..."
+                name={property}
+              />
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <p className='label'>{label}</p>
                 <div>
                   <button
-                    type="button"
-                    onClick={() => handleSort(property, 'desc')}
-                    
-                   className={`btnForSort ${selectedBtnSort && sortOrder === 'desc' ? 'selectedBtnSort' : ''}`}
-                  >
-                    <FaSortUp  style={{ height:'1.4rem', width: '1.4rem',verticalAlign: 'center' }} />
-                  </button>
-                
-                  <button
-                    type="button"
-                    onClick={() => handleSort(property, 'asc')}
-                    style={{ marginLeft: '8px', width: '50px',display: 'block', marginTop: '8px'}}
-                    className={`btnForSort ${selectedBtnSort && sortOrder === 'asc' ? 'selectedBtnSort' : ''}`}
-                  >
-                    <FaSortDown />
-                  </button>
+                  type="button"
+                  onClick={() => handleSort(property, 'desc')}
+                  className={`btnForSort ${selectedBtnSort && sortOrder === 'desc' ? 'selectedBtnSort' : ''}`}
+                    >
+                      <FaSortUp  style={{ height:'1.4rem', width: '1.4rem',verticalAlign: 'center' }} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleSort(property, 'asc')}
+                      style={{ marginLeft: '8px', width: '50px',display: 'block', marginTop: '8px'}}
+                      className={`btnForSort ${selectedBtnSort && sortOrder === 'asc' ? 'selectedBtnSort' : ''}`}
+                    >
+                      <FaSortDown />
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </th>
-          ))}
-        </tr>
-      </thead>
-    );
-  };
+              </th>
+            ))}
+          </tr>
+        </thead>
+      );
+    };
 
   const renderBody = () => {
-    let sortedData = data;
-    if (sortKey !== null) {
-      sortedData = data.slice().sort((a, b) => {
-        if (typeof sortedData[0][sortKey] === 'string' && sortedData[0][sortKey].match(/^\d{2}([./-])\d{2}\1\d{4}$/)) {
-          return sortDates(a, b);
-        } else {
-          if (a[sortKey] < b[sortKey]) return sortOrder === 'asc' ? -1 : 1;
-          if (a[sortKey] > b[sortKey]) return sortOrder === 'asc' ? 1 : -1;
-          return 0;
-        }
-      });
-    }
+    const start = (page - 1) * perPage;
+    const end = start + perPage;
+    // const currentData = sortedData.slice(start, end);
+    const currentData = filteredData.slice(start, end);
 
     return (
       <tbody>
-        {sortedData.map((item, index) => (
+        {currentData.map((item, index) => (
           <tr key={index}>
             {columns.map(({ property }) => (
               <td key={`cell-${index}-${property}`}>{item[property]}</td>
@@ -90,7 +148,7 @@ export default function Table({ data, columns }) {
       </tbody>
     );
   };
-
+        
   const columnData = columns.map(({ label, property }) => ({
     label,
     property,
@@ -98,9 +156,53 @@ export default function Table({ data, columns }) {
   }));
 
   return (
+    <>
+    <button onClick={handleResetSearch}>Reset</button>
+    <input type="text" value={searchTerm} onChange={handleSearch} placeholder="Search..." />
+    <div className='box_ChoiceEntries' style={{display:'flex', justifyContent:'space-between', alignItems:'center', width:'350px', height:'30px', marginBottom:'20px'}}>
+      <div>
+        <span>Show</span>
+        <select value={perPage} onChange={handlePerPageChange} style={{margin:'8px'}}>
+          <option value={sortedData.length}>All</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+        <span>entries of {sortedData.length}</span>
+      </div>
+    </div>
+
     <table>
       {renderHeader(columnData)}
       {renderBody()}
-    </table>
+    </table> 
+
+    <div className="pagination" style={{display:'flex', alignItems:'center', margin:'20px', justifyContent:'center'}}>
+      {page > 1 && (
+        <button
+          className="paginationButton"
+          style={{border:'none', fontSize:'1.2rem'}}
+          onClick={() => handlePageChange(page - 1)}
+        >
+          &lt;
+        </button>
+      )}
+      <span className="paginationText">
+        Page {page} sur {totalPages}
+      </span>
+      {page < totalPages && (
+        <button
+          className="paginationButton"
+          style={{border:'none', fontSize:'1.2rem'}}
+          onClick={() => handlePageChange(page + 1)}
+        >
+          &gt;
+        </button>
+      )}
+      </div>
+    </>
   );
 }
+    
